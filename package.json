@@ -9,9 +9,16 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@walmart/ld-kit": "latest",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
+  },
+  "peerDependencies": {
+    "@walmart/ld-kit": "*"
+  },
+  "peerDependenciesMeta": {
+    "@walmart/ld-kit": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "@types/react": "^18.3.12",
