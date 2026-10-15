@@ -76,6 +76,10 @@ function getThresholdReached(weeks: number): number | null {
   return STREAK_THRESHOLDS.includes(weeks) ? weeks : null
 }
 
+function getNextStreakThreshold(weeks: number): number | null {
+  return STREAK_THRESHOLDS.find((threshold) => weeks < threshold) ?? null
+}
+
 function App() {
   const [params, setParams] = useState<AppParams>(() => readParams())
   const [selectedGoal, setSelectedGoal] = useState(0)
@@ -186,6 +190,7 @@ function PageIntro({ eyebrow, title, description }: { eyebrow: string; title: st
 function HomePage({ points, weeks, onNavigate }: { points: number; weeks: number; onNavigate: (page: Page) => void }) {
   const band = getPointsBand(points)
   const pointsPercent = band.ceiling === band.floor ? 100 : Math.min(100, ((points - band.floor) / (band.ceiling - band.floor)) * 100)
+  const nextStreak = getNextStreakThreshold(weeks)
   return (
     <div className="page-stack">
       <section className="home-welcome">
@@ -206,7 +211,11 @@ function HomePage({ points, weeks, onNavigate }: { points: number; weeks: number
           <span className="status-pill">{band.name}</span>
         </div>
         <div className="progress-track" aria-label={`${Math.round(pointsPercent)} percent toward the next points band`}><span style={{ width: `${pointsPercent}%` }} /></div>
-        <p className="streak-line">{weeks}-week streak</p>
+        <div className="streak-home-summary">
+          <div className="streak-home-heading"><span className="streak-kicker">WEEKLY ACTIVITY</span><span className="streak-state">{weeks === 0 ? 'Ready to begin' : 'Keep the rhythm going'}</span></div>
+          <div className="streak-home-row"><strong>{weeks}-week streak</strong><span>{nextStreak ? `${nextStreak - weeks} weeks to next badge` : 'Evergreen rhythm'}</span></div>
+          <div className="streak-markers" aria-label="Streak badge progress">{STREAK_THRESHOLDS.map((threshold) => <span className={`streak-marker${weeks >= threshold ? ' earned' : ''}`} key={threshold} />)}</div>
+        </div>
         <div className="card-footer-row"><span>{points < 3000 ? `${Math.max(0, band.ceiling - points).toLocaleString()} points to next band` : 'You reached the highest points band'}</span><button className="text-button" type="button" onClick={() => onNavigate('pass')}>View pass <span aria-hidden="true">→</span></button></div>
       </section>
 
@@ -264,6 +273,10 @@ function WeeklyActivity({ weeks, protection, selectedGoal, goalComplete, onSelec
   return (
     <section className="card weekly-activity-section" aria-labelledby="weekly-activity-title">
       <div className="section-heading"><div><p className="eyebrow">Weekly progress</p><h2 id="weekly-activity-title">Weekly Activity</h2></div><span className="small-note">Illustrative preview</span></div>
+      <div className="streak-focus">
+        <div className="streak-count"><strong>{weeks}</strong><span>WEEK STREAK</span></div>
+        <div className="streak-focus-copy"><strong>{weeks === 0 ? 'Start your first streak' : 'Your streak is active'}</strong><p>{getNextStreakThreshold(weeks) ? `Reach ${getNextStreakThreshold(weeks)} weeks to unlock your next cosmetic badge.` : 'You have reached every streak badge threshold.'}</p></div>
+      </div>
       <p className="illustrative-note">An active week requires at least one qualifying Community activity completed that week — an illustrative placeholder while the activity definition remains a Phase 2 decision.</p>
       <div className="weekly-timeline" aria-label="Weekly streak milestones">
         {STREAK_THRESHOLDS.map((threshold) => {
