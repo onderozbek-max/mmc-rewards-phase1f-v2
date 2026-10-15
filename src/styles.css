@@ -210,3 +210,102 @@ button:focus-visible { outline: 3px solid #3977c9; outline-offset: 3px; }
   .goal-action-row { align-items: flex-start; flex-direction: column; }.primary-button { width: 100%; }
   .profile-card { padding: 18px; }.profile-points { display: none; }.benefit-status { font-size: 10px; }
 }
+
+@media (min-width: 801px) {
+  html, body { background: #dfe7df; }
+  .app-frame { width: min(100%, 440px); min-height: 100vh; margin: 0 auto; overflow: hidden; background: #f7f8f3; box-shadow: 0 0 36px rgba(23, 56, 45, .12); }
+  .site-header { background: rgba(255, 255, 255, .97); }
+  .header-inner { width: 100%; height: 68px; padding: 0 17px; gap: 14px; }
+  .desktop-nav { display: none; }
+  .app-main { width: 100%; margin: 0; padding: 20px 16px 166px; }
+  .page-stack { gap: 14px; }
+  .page-intro { display: block; margin: 2px 1px 2px; }
+  .page-intro h1, .home-welcome h1 { font-size: 30px; }
+  .eyebrow { font-size: 10px; }
+  .intro-description { margin: 8px 0 0; font-size: 12px; line-height: 1.45; }
+  .card { border-radius: 16px; }
+  .card h2, .section-heading h2 { font-size: 21px; }
+  .section-heading, .card-heading-row, .card-footer-row, .goal-action-row { gap: 12px; }
+  .small-note { font-size: 10px; }
+  .section-supporting-copy { margin: 8px 0 15px; font-size: 12px; }
+  .home-welcome { min-height: 158px; padding: 23px 20px; border-radius: 18px; }
+  .home-welcome h1 { max-width: 290px; font-size: 31px; }
+  .home-welcome p:not(.eyebrow) { max-width: 290px; margin-top: 10px; font-size: 12px; line-height: 1.45; }
+  .welcome-sun { width: 57px; height: 57px; flex: 0 0 57px; font-size: 26px; }
+  .points-card { padding: 18px; }
+  .points-card h2 { margin-top: 4px; font-size: 30px; }
+  .points-card h2 span { font-size: 13px; }
+  .status-pill { padding: 6px 9px; font-size: 10px; }
+  .progress-track { height: 7px; margin: 17px 0 12px; }
+  .card-footer-row { font-size: 11px; }
+  .new-grid { gap: 10px; }
+  .new-card { min-height: 178px; padding: 17px 16px; }
+  .new-card-icon { margin-bottom: 9px; font-size: 23px; }
+  .new-card-tag { font-size: 9px; }
+  .new-card h3 { margin: 7px 0 5px; font-size: 15px; line-height: 1.2; }
+  .new-card p { margin-bottom: 13px; font-size: 11px; line-height: 1.45; }
+  .pass-hero { min-height: 132px; padding: 20px; }
+  .pass-points { margin-top: 7px; font-size: 35px; }
+  .pass-points span { font-size: 12px; }
+  .pass-caption { margin-top: 3px; font-size: 11px; }
+  .pass-seal { width: 68px; height: 68px; font-size: 28px; }
+  .pass-seal span { font-size: 6px; }
+  .pass-status-card { padding: 19px 18px; }
+  .pass-status-copy { margin-top: 8px; font-size: 12px; }
+  .timeline-card { padding: 19px 18px 15px; }
+  .milestone-timeline { margin-top: 18px; }
+  .milestone { min-height: 65px; gap: 11px; }
+  .milestone-line { top: 34px; left: 15px; height: 38px; }
+  .milestone-icon { width: 32px; height: 32px; flex-basis: 32px; font-size: 13px; }
+  .milestone-copy { padding-bottom: 10px; }
+  .milestone-title-row { gap: 8px; }
+  .milestone h3 { margin: 0 0 2px; font-size: 13px; }
+  .milestone-title-row span { font-size: 9px; }
+  .milestone p { font-size: 10px; }
+  .weekly-activity-section { padding: 19px 18px; }
+  .illustrative-note { margin-top: 11px !important; font-size: 10px !important; }
+  .weekly-timeline { gap: 5px; margin: 19px 0 0; }
+  .weekly-timeline:before { top: 16px; }
+  .weekly-milestone { gap: 5px; }
+  .weekly-milestone .milestone-icon { width: 32px; height: 32px; }
+  .weekly-milestone strong { font-size: 10px; line-height: 1.2; }
+  .weekly-milestone > span { font-size: 8px; line-height: 1.2; }
+  .cosmetic-note { margin-top: 15px !important; font-size: 9px !important; }
+  .weekly-goal-card { margin-top: 17px; padding: 15px; }
+  .weekly-goal-header p { margin-bottom: 11px; font-size: 10px; }
+  .goal-list { gap: 6px; }
+  .goal-option { gap: 9px; padding: 10px 11px; }
+  .goal-option.selected { padding: 9px 10px; }
+  .goal-copy strong { font-size: 11px; }
+  .goal-copy small { font-size: 9px; }
+  .goal-check { width: 18px; height: 18px; flex-basis: 18px; font-size: 13px; }
+  .goal-action-row { margin-top: 11px; }
+  .completed-message { font-size: 10px; }
+  .protection-line { margin-top: 15px !important; padding-top: 12px; font-size: 11px !important; }
+  .profile-card { gap: 12px; padding: 17px; }
+  .profile-avatar { width: 48px; height: 48px; font-size: 14px; }
+  .profile-card h2 { font-size: 16px; }
+  .profile-card p { margin-top: 3px; font-size: 10px; }
+  .profile-points { font-size: 11px; }
+  .benefits-section { padding: 19px 18px; }
+  .benefit-list { margin-top: 14px; }
+  .benefit-row { gap: 10px; padding: 12px 0; }
+  .benefit-icon { width: 27px; height: 27px; font-size: 12px; }
+  .benefit-row h3 { font-size: 11px; }
+  .benefit-row p { font-size: 10px; }
+  .benefit-status { font-size: 9px; }
+  .bottom-nav { position: fixed; z-index: 11; right: auto; bottom: 0; left: 50%; width: min(100%, 440px); display: grid; grid-template-columns: repeat(3, 1fr); transform: translateX(-50%); padding: 7px 12px max(7px, env(safe-area-inset-bottom)); border-top: 1px solid var(--line); background: rgba(255,255,255,.97); backdrop-filter: blur(12px); }
+  .bottom-nav-item { display: flex; flex-direction: column; align-items: center; gap: 2px; color: #819089; font-size: 10px; font-weight: 600; }
+  .bottom-nav-item.is-active { color: var(--forest); }
+  .bottom-nav-icon { font-size: 19px; line-height: 1.2; }
+  .bottom-nav-item.is-active .bottom-nav-icon { color: var(--leaf); }
+  .scenario-switcher { right: auto; bottom: 65px; left: 50%; width: min(100%, 440px); transform: translateX(-50%); }
+  .scenario-switcher-inner { width: calc(100% - 24px); display: block; padding: 8px; border-radius: 14px; }
+  .scenario-switcher-copy { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin: 0 4px 6px; }
+  .scenario-switcher-label { font-size: 9px; }
+  .scenario-switcher-hint { font-size: 9px; }
+  .scenario-options { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px; }
+  .scenario-option { min-height: 43px; padding: 6px 4px; border-radius: 8px; }
+  .scenario-option-points { font-size: 9px; }
+  .scenario-option-title { font-size: 8px; }
+}
