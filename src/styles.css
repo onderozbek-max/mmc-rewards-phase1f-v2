@@ -39,7 +39,7 @@ button:focus-visible { outline: 3px solid #3977c9; outline-offset: 3px; }
 .nav-button.is-active { box-shadow: inset 0 -2px 0 var(--leaf); }
 .avatar-button { width: 38px; height: 38px; border-radius: 50%; background: var(--sand); color: var(--forest); font-size: 12px; font-weight: 700; border: 1px solid #ead9b9; }
 
-.app-main { width: min(1160px, calc(100% - 48px)); margin: 0 auto; padding: 52px 0 92px; }
+.app-main { width: min(1160px, calc(100% - 48px)); margin: 0 auto; padding: 52px 0 132px; }
 .page-stack { display: grid; gap: 25px; }
 .page-intro { display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; margin-bottom: 4px; }
 .page-intro h1, .home-welcome h1 { margin: 3px 0 0; color: var(--deep-forest); font-family: 'Playfair Display', Georgia, serif; font-size: clamp(32px, 4.5vw, 52px); line-height: 1.04; letter-spacing: -0.04em; }
@@ -161,10 +161,23 @@ button:focus-visible { outline: 3px solid #3977c9; outline-offset: 3px; }
 
 .bottom-nav { display: none; }
 
+.scenario-switcher { position: fixed; z-index: 12; right: 0; bottom: 18px; left: 0; display: flex; justify-content: center; pointer-events: none; }
+.scenario-switcher-inner { width: min(1060px, calc(100% - 48px)); display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 10px 12px 10px 17px; border: 1px solid rgba(219, 228, 220, .95); border-radius: 16px; background: rgba(255, 255, 255, .96); box-shadow: 0 8px 24px rgba(35, 75, 59, .14); backdrop-filter: blur(12px); pointer-events: auto; }
+.scenario-switcher-copy { display: grid; gap: 2px; flex: 0 0 auto; }
+.scenario-switcher-label { color: var(--forest); font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.scenario-switcher-hint { color: #789087; font-size: 11px; }
+.scenario-options { display: grid; grid-template-columns: repeat(4, minmax(120px, 1fr)); gap: 5px; flex: 1; }
+.scenario-option { min-width: 0; display: grid; gap: 2px; padding: 8px 10px; border: 1px solid transparent; border-radius: 10px; background: #f3f6f1; color: var(--muted); cursor: pointer; text-align: left; transition: border-color .15s ease, background .15s ease, color .15s ease; }
+.scenario-option:hover { border-color: #aac7a6; }
+.scenario-option.is-active { border-color: #9cbd99; background: var(--mint); color: var(--forest); box-shadow: inset 0 0 0 1px rgba(156, 189, 153, .2); }
+.scenario-option-points { font-size: 11px; font-weight: 700; }
+.scenario-option-title { overflow: hidden; color: #789087; font-size: 10px; line-height: 1.25; text-overflow: ellipsis; white-space: nowrap; }
+.scenario-option.is-active .scenario-option-title { color: var(--forest); }
+
 @media (max-width: 800px) {
   .header-inner, .app-main { width: min(100% - 32px, 600px); }
   .desktop-nav { display: none; }
-  .app-main { padding-top: 31px; padding-bottom: 92px; }
+  .app-main { padding-top: 31px; padding-bottom: 166px; }
   .page-intro { align-items: flex-start; flex-direction: column; gap: 17px; }
   .page-intro h1 { font-size: 38px; }
   .home-welcome { padding: 28px 25px; min-height: 220px; }
@@ -173,6 +186,15 @@ button:focus-visible { outline: 3px solid #3977c9; outline-offset: 3px; }
   .weekly-milestone strong { font-size: 11px; }
   .bottom-nav { position: fixed; z-index: 11; right: 0; bottom: 0; left: 0; display: grid; grid-template-columns: repeat(3, 1fr); padding: 7px 12px max(7px, env(safe-area-inset-bottom)); border-top: 1px solid var(--line); background: rgba(255,255,255,.96); backdrop-filter: blur(12px); }
   .bottom-nav-item { display: flex; flex-direction: column; align-items: center; gap: 2px; color: #819089; font-size: 10px; font-weight: 600; }.bottom-nav-item.is-active { color: var(--forest); }.bottom-nav-icon { font-size: 20px; line-height: 1.2; }.bottom-nav-item.is-active .bottom-nav-icon { color: var(--leaf); }
+  .scenario-switcher { bottom: 65px; }
+  .scenario-switcher-inner { width: calc(100% - 24px); display: block; padding: 8px; border-radius: 14px; }
+  .scenario-switcher-copy { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin: 0 4px 6px; }
+  .scenario-switcher-label { font-size: 9px; }
+  .scenario-switcher-hint { font-size: 9px; }
+  .scenario-options { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px; }
+  .scenario-option { min-height: 43px; padding: 6px 4px; border-radius: 8px; }
+  .scenario-option-points { font-size: 9px; }
+  .scenario-option-title { font-size: 8px; }
 }
 
 @media (max-width: 480px) {

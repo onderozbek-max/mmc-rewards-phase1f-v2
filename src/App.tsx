@@ -14,6 +14,19 @@ type AppParams = {
   nav: NavMode
 }
 
+type Scenario = {
+  points: number
+  label: string
+  title: string
+}
+
+const SCENARIOS: Scenario[] = [
+  { points: 100, label: 'Under 250', title: 'Locked modules' },
+  { points: 500, label: '250–999', title: 'Modules unlocked' },
+  { points: 1500, label: '1,000–2,999', title: 'Basic IHUTs' },
+  { points: 3000, label: '3,000+', title: 'Premium IHUTs' },
+]
+
 type Goal = {
   title: string
   description: string
@@ -72,6 +85,13 @@ type PointsBand = {
   floor: number
   ceiling: number
   nextLabel: string
+}
+
+function getScenarioIndex(points: number): number {
+  if (points < 250) return 0
+  if (points < 1000) return 1
+  if (points < 3000) return 2
+  return 3
 }
 
 function getPointsBand(points: number): PointsBand {
@@ -142,6 +162,14 @@ function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
+  const switchScenario = (points: number) => {
+    const url = new URL(window.location.href)
+    url.searchParams.set('points', String(points))
+    window.history.pushState({}, '', url)
+    setParams(readParams())
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
   const selectGoal = (index: number) => {
     setSelectedGoal(index)
     setGoalComplete(false)
@@ -166,6 +194,7 @@ function App() {
         {params.page === 'profile' && <ProfilePage points={params.points} weeks={params.weeks} />}
       </main>
       <BottomNav currentPage={params.page} onNavigate={navigate} />
+      <ScenarioSwitcher points={params.points} onChange={switchScenario} />
     </div>
   )
 }
@@ -211,6 +240,35 @@ function BottomNav({ currentPage, onNavigate }: { currentPage: Page; onNavigate:
         </button>
       ))}
     </nav>
+  )
+}
+
+function ScenarioSwitcher({ points, onChange }: { points: number; onChange: (points: number) => void }) {
+  const activeScenario = getScenarioIndex(points)
+
+  return (
+    <aside className="scenario-switcher" aria-label="Prototype scenario switcher">
+      <div className="scenario-switcher-inner">
+        <div className="scenario-switcher-copy">
+          <span className="scenario-switcher-label">Prototype scenarios</span>
+          <span className="scenario-switcher-hint">Preview member access by points</span>
+        </div>
+        <div className="scenario-options" role="group" aria-label="Choose a points scenario">
+          {SCENARIOS.map((scenario, index) => (
+            <button
+              key={scenario.points}
+              className={`scenario-option${activeScenario === index ? ' is-active' : ''}`}
+              type="button"
+              onClick={() => onChange(scenario.points)}
+              aria-pressed={activeScenario === index}
+            >
+              <span className="scenario-option-points">{scenario.label}</span>
+              <span className="scenario-option-title">{scenario.title}</span>
+            </button>
+          ))}
+        </div>
+      </div>
+    </aside>
   )
 }
 
